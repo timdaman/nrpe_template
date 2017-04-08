@@ -154,7 +154,11 @@ def get_url(url):
     global tls_context
     req = Request(url=url, headers=headers)
     logger.debug("Requesting: {} with headers {}".format(url, headers))
-    response = urlopen(req, context=tls_context, timeout=TIMEOUT)
+    if supports_tls_context:
+        response = urlopen(req, context=tls_context, timeout=TIMEOUT)
+    else:
+        response = urlopen(req, timeout=TIMEOUT)
+
     bytes = response.read()
     logger.debug("Received: {}".format(repr(bytes)))
     return bytes
