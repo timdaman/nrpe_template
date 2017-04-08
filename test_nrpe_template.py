@@ -1,7 +1,11 @@
 import json
 import unittest
 from collections import OrderedDict
-from unittest.mock import patch, Mock
+
+try:
+    from unittest.mock import patch, Mock  # Post 3.4.3
+except:
+    from mock import patch, Mock  # Pre
 
 import sys
 
