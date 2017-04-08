@@ -1,0 +1,15 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+install:
+  - pip install codeclimate-test-reporter coverage
+# command to run tests
+script:
+  - coverage run ./test/test_nrpe_template.py
+  - codeclimate-test-reporter || echo "Ignoring Code Climate reporter upload failure"
