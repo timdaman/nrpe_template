@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/timdaman/nrpe_template.svg?branch=master)](https://travis-ci.org/timdaman/nrpe_template)
+[![Code Climate](https://codeclimate.com/github/timdaman/nrpe_template/badges/gpa.svg)](https://codeclimate.com/github/timdaman/nrpe_template)
+[![Test Coverage](https://codeclimate.com/github/timdaman/nrpe_template/badges/coverage.svg)](https://codeclimate.com/github/timdaman/nrpe_template/coverage)
 Author: Tim Laurence
 
 This is a sample NRPE compatible plugin. It contains many help functions which should make writing your own checks
