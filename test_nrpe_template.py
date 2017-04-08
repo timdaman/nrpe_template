@@ -368,15 +368,15 @@ class TestPerform(unittest.TestCase):
                         }
                         '''
 
-    args = ['--no-validate', '--good', '5', '--prime', '--above_range', '0:0', '--below_range', '0:0']
+    args = ['--good', '5', '--prime', '--above_range', '0:0', '--below_range', '0:0']
 
     def setUp(self):
         tested.tls_context = None
         tested.return_code = tested.UNDEFINED_RC
 
     def test_no_validate(self):
-        if sys.version_info >= (2,7,9):
-            tested.perform_checks(self.args)
+        if tested.supports_tls_context:
+            tested.perform_checks(args=['--no-validate', '--prime', ])
             self.assertNotEqual(tested.tls_context, None)
 
     def test_get_second(self):
