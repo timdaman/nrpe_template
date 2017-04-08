@@ -2,4 +2,4 @@ languages:
 
   Python: true
 exclude_paths:
-- "test/test_nrpe_template.py"
+- "test_nrpe_template.py"

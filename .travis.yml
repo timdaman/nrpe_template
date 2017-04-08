@@ -11,5 +11,5 @@ install:
   - pip install codeclimate-test-reporter coverage
 # command to run tests
 script:
-  - coverage run ./test/test_nrpe_template.py
+  - coverage run ./test_nrpe_template.py
   - codeclimate-test-reporter || echo "Ignoring Code Climate reporter upload failure"
