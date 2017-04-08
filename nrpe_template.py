@@ -85,7 +85,9 @@ url_base = None
 token = None
 headers = {'Content-Type': 'application/json'}
 tls_context = None
-supports_tls_context = sys.version_info >= (2,7,9)
+supports_tls_context = (sys.version_info >= (2, 7, 9) and sys.version_info < (3, 0, 0)) or \
+                       (sys.version_info >= (3, 4, 3) and sys.version_info >= (3, 0, 0))
+
 
 #########################################################################################################################
 #
@@ -99,11 +101,13 @@ def update_return_code(new_code):
     global return_code
     return_code = new_code if new_code > return_code else return_code
 
+
 def get_final_return_code():
     if return_code == UNDEFINED_RC:
         return UNKNOWN_RC
     else:
         return return_code
+
 
 def ok(message):
     """
@@ -416,7 +420,6 @@ def check_range_below(current_second, range_spec):
 
 
 def perform_checks(args):
-
     parsed_args = process_args(args)
     try:
         current_second = get_second()
@@ -452,11 +455,13 @@ def perform_checks(args):
         traceback.print_exc()
         unknown("We got the following error {}".format(repr(e)))
 
-    ####################################################################################################################
-    #
-    #  End of customizable section. The rest simply returns results.
-    #
-    ####################################################################################################################
+        ####################################################################################################################
+        #
+        #  End of customizable section. The rest simply returns results.
+        #
+        ####################################################################################################################
+
+
 if __name__ == '__main__':
     args = perform_checks(argv[1:])
     print_results()

@@ -1,7 +1,7 @@
 import json
 import unittest
 from collections import OrderedDict
-from unittest.mock import patch, MagicMock, Mock
+from unittest.mock import patch, Mock
 
 import sys
 
