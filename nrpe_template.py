@@ -47,6 +47,8 @@ from collections import deque
 from sys import argv
 
 # This gets a usable urlopen for both python 2 and 3.
+import sys
+
 try:
     from urllib.request import Request, urlopen  # Python 3
 except:
@@ -83,7 +85,7 @@ url_base = None
 token = None
 headers = {'Content-Type': 'application/json'}
 tls_context = None
-
+supports_tls_context = sys.version_info >= (2,7,9)
 
 #########################################################################################################################
 #
@@ -423,11 +425,13 @@ def perform_checks(args):
 
         # Do we validate SSL certs?
         if not parsed_args.validate:
-            global tls_context
-            tls_context = ssl.create_default_context()
-            tls_context.check_hostname = False
-            tls_context.verify_mode = ssl.CERT_NONE
-
+            if supports_tls_context:
+                global tls_context
+                tls_context = ssl.create_default_context()
+                tls_context.check_hostname = False
+                tls_context.verify_mode = ssl.CERT_NONE
+            else:
+                raise NotImplementedError("Disabling TLS validation is not supported in python versions below 2.7.9")
         global quiet
         quiet = parsed_args.quiet
 

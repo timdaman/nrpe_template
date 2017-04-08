@@ -371,8 +371,9 @@ class TestPerform(unittest.TestCase):
         tested.return_code = tested.UNDEFINED_RC
 
     def test_no_validate(self):
-        tested.perform_checks(self.args)
-        self.assertNotEqual(tested.tls_context, None)
+        if sys.version_info >= (2,7,9):
+            tested.perform_checks(self.args)
+            self.assertNotEqual(tested.tls_context, None)
 
     def test_get_second(self):
         response = Mock(**{'read.return_value': self.TEST_BYTES})
