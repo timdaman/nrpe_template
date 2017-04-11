@@ -22,10 +22,9 @@ Other times will generally be critical
 * When sensible please don't forget to include performance data. There is a function called add_performance_data() to make this easy
 * Try to avoid importing libraries outside of the standard library. Doing so can make it harder to run your plug-in on and the various servers that may end up running it. By sticking to the standard library this should run most places where python is installed
 * Test your code with python 2.7 and to ensure it works on current and future python releases
-* The Requests package is awesome but not included in the standard library. :( As an aid have wrapped urllib to make it easier
-to make http requests added the following helper functions; `get_url()`, `get_url_json()`. You are welcome.
+* The Requests package is awesome but not included in the standard library. :( As an aid I have wrapped urllib to make it easier to make http requests by using the following helper functions; `get_url()`, `get_url_ascii`, `get_url_utf8()`, and `get_url_json()`. You are welcome.
 * I have included a logger to make it easy to debug while developing and then turn off that output. Use
-`logger.debug('your message')` for development. Comment or uncomment the line about the declaration for 'logger; to
+`logger.debug('your message')` for development. Comment or uncomment the line above the declaration for 'logger; to
 turning this output on and off.
 
 # Credits:
